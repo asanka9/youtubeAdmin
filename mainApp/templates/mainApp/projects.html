@@ -1,0 +1,22 @@
+{% extends "mainApp/main.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div>
+        {% for project in projects %}
+            <div class="col-3 mt-4 mr-4 p-5 card bg-dark text-light float-left">
+                <h2><a class="text-light" href="{% url 'mainApp-home'%}{{ project.name }} ">{{ project.name }}</a></h2>
+            </div>
+        {% endfor %}
+        
+        <div class="col-3 mt-4 mr-4 p-5 card bg-dark text-light float-left">
+            {% csrf_token %}
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="form-group">
+                    <button class="btn btn-dark" type="submit"><b>CREATE ></b></button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %} 

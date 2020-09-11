@@ -1,0 +1,24 @@
+{% extends "mainApp/main.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div>
+        <div class="mt-4">
+
+        {% for sub_lesson in sublessons %}
+            <div class="col-12 mt-2 align-center mr-4 p-2 card bg-success text-light ">
+                <b><a class="text-light " href="{% url 'mainApp-home'%}{{project}}/{{lesson}}/{{sub_lesson.name}} ">{{ sub_lesson.name }}</a></b>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="col-12 mt-4 mr-4 p-2 card bg-light float-left">
+            {% csrf_token %}
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %} 

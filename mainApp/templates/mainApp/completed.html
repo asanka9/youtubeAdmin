@@ -1,0 +1,38 @@
+{% extends "mainApp/main.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section  pt-5">
+        <div class="">
+            <h2>Checking List</h2>
+            <p>The .table-hover class enables a hover state (grey background on mouse over) on table rows:</p>            
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Project Name</th>
+                  <th>Lesson Name</th>
+                  <th>Sub Lesson Name</th>
+                  <th>Date</th>
+                  <th>URL</th>
+                  <th>Task</th>
+                </tr>
+              </thead>
+              <tbody>
+            {% for com in coms %}
+                <tr>
+                  <td>{{com.project_name}}</td>
+                  <td>{{com.lesson_name}}</td>
+                  <td>{{com.sublesson_name}}</td>
+                  <td>{{com.date}}</td>
+                  <td><a href="{% url 'mainApp-home' %}{{com.project_name}}/{{com.lesson_name}}/{{com.sublesson_name}}"><b class="text-success">GO</b></a></td>
+                  <td>
+                    <div class="form-group">
+                        <button class="btn btn-outline-link" type="submit"><a href="{% url 'mainApp-home' %}deletec/{{com.project_name}}/{{com.lesson_name}}/{{com.sublesson_name}}">COMPLETED</a></button>
+                    </div>
+                  </td>
+                </tr>
+            {% endfor %}
+              </tbody>
+            </table>
+          </div>
+    </div>
+{% endblock content %}
