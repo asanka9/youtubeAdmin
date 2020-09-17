@@ -8,6 +8,8 @@ project_name = ''
 lesson_name = ''
 sublesson_name = ''
 
+#Commented 2020
+
 @login_required
 def home(request):
     return redirect('mainApp-home')
