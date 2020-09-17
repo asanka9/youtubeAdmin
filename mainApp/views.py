@@ -121,7 +121,7 @@ def video_lessons(request,pname,lname,sname):
         'form':p_form,
         'pname':pname,
         'lname':lname,
-        'sname':sname
+        'sname':sname 
         
 
     }
